@@ -4,7 +4,6 @@ import { ICard } from "../common/interfaces/card";
 import { SORT_ENUM } from "../common/enums/selectWithButton";
 
 const useSortedCards = (cards: ICard[], sort: SORT_ENUM): ICard[] | [] => {
-    console.log(cards)
     const sortCards = useMemo((): ICard[] | [] => {
         if (cards.length > 0) {
             const newCards: ICard[] | [] = Object.assign([], cards);

@@ -23,8 +23,12 @@ export default class CardController {
 
     @Get()
     public async getCards(): Promise<ResGetCardsDto> {
-        const cards = await this.cardService.getCards();
-        return cards;
+        try {
+            return await this.cardService.getCards()
+        } catch(error) {
+            throw new HttpException(MessagesEnum.ERROR_DEFAULT, HttpStatus.NOT_FOUND)
+        }
+        
     }
 
     @Post()

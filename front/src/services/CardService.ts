@@ -6,9 +6,11 @@ import { ResCardDto, ResMessageCardDto } from "./dto/card.dto";
 export default class CardService {
   public static async getCards(): Promise<ResCardDto> {
 
-    const response: Response = await fetch(`http://localhost:5000/cards`, {
-      method: 'GET',
-      redirect: 'follow'
+    const response = await fetch(`${api.baseUrl}cards`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
 
     if (!response.ok) {
@@ -85,7 +87,6 @@ export default class CardService {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "redirect": 'follow'
       },
       body: JSON.stringify(body)
     })

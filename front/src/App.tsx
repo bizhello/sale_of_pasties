@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './components/Header';
 import SearchInput from './components/SearchInput';
@@ -44,7 +46,7 @@ function App() {
       const newCard: ICard = await CardService.createCard(cardDto);
       setCards([...cards, newCard]);
     } catch (e) {
-      console.log("Не удалось создать карточку товара!");
+      toast("Не удалось создать карточку товара!");
     }
   }, [cards])
 
@@ -58,7 +60,7 @@ function App() {
       copyCards[indexCard] = card;
       setCards(copyCards)
     } catch (e) {
-      console.log("Не удалось изменить товар!");
+      toast("Не удалось изменить товар!");
     }
   }, [cards])
 
@@ -76,7 +78,7 @@ function App() {
 
       setCards(newCards || null)
     } catch (e) {
-      console.log("Не удалось уменьшить кол-во товара!");
+      toast("Не удалось уменьшить кол-во товара!");
     }
   }, [cards])
 
@@ -94,7 +96,7 @@ function App() {
 
       setCards(newCards || null)
     } catch (e) {
-      console.log("Не удалось увеличить кол-во товара!");
+      toast("Не удалось увеличить кол-во товара!");
     }
   }, [cards])
 
@@ -103,7 +105,7 @@ function App() {
       await CardService.removeCard(idCard)
       setCards(cards.filter(card => card.id !== idCard))
     } catch {
-      console.log("Не удалось удалить товара!");
+      toast("Не удалось удалить товара!");
     }
   }, [cards])
 
@@ -118,11 +120,12 @@ function App() {
       
       setCards([...cards, ...newAr]);
     } catch (error) {
-      console.log("Не удалось загрузить товар!");
+      toast("Не удалось загрузить товар!");
     } finally {
       setIsLoad(false);
     }
   }, [])
+  
   useEffect(() => {
     fetchCards();
   }, [fetchCards])
@@ -144,6 +147,7 @@ function App() {
       </TransitionGroup>
       {!isLoad && searchCards?.length === 0 && <h2 style={{ margin: '2em' }}>Товар не найден</h2>}
       {isOpenPopup && <Popup togglePopup={togglePopup} changeValuePopup={changeValuePopup} valuePopup={valuePopup} changeCard={changeCard} createCard={createCard} />}
+      <ToastContainer />
     </div>
   );
 }

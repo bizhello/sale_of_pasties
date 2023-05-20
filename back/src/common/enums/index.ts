@@ -37,6 +37,7 @@ enum MessagesEnum {
   MIN_COUNT = 'Значение должно быть больше 0',
   TOKEN_NOT_VALID = 'Токен не валидный',
   IMAGE_NOT_FOUND = 'Картинка не найдена',
+  ERROR_DEFAULT = 'Ошибка на сервере'
 }
 
 export { ErrorsNameEnum, MessagesEnum, RoutesEnum, TextEnum };

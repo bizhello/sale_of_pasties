@@ -1,5 +1,6 @@
 .header {
     width: 100%;
+    margin: 0 1em;
     min-height: 5em;
     background-color: #3f51b5;
     border-radius: 5px;
