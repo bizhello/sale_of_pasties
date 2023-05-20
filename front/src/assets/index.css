@@ -1,0 +1,7 @@
+@import url(./normalize.css);
+@import url(./App.css);
+@import url(../components/Header/style.css);
+@import url(../components/SearchInput/style.css);
+@import url(../components/SelectWithButton/style.css);
+@import url(../components/Popup/style.css);
+@import url(../components/Card/style.css);
